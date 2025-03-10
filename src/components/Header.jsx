@@ -1,12 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import { FaShopify } from "react-icons/fa";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import api from "../utils/api";
 
 const Header = () => {
+  const [categories, setCategories] = useState();
   useEffect(() => {
     //kategorilerin verilerini al
-    api.get("/products/categories").then((res) => console.log(res.data));
+    api.get("/products/categories").then((res) => setCategories(res.data));
   }, []);
   return (
     <nav className="navbar navbar-dark bg-dark bg-black fixed-top navbar-expand-md ">
@@ -27,7 +28,7 @@ const Header = () => {
         </button>
         <div
           className="offcanvas offcanvas-end text-bg-dark"
-          tabindex="-1"
+          tabIndex="-1"
           id="offcanvasDarkNavbar"
           aria-labelledby="offcanvasDarkNavbarLabel"
         >
@@ -63,9 +64,11 @@ const Header = () => {
                   Kategoriler
                 </button>
                 <ul className="dropdown-menu dropdown-menu-dark">
-                  <li>
-                    <button className="dropdown-item">Kategori1</button>
-                  </li>
+                  {categories?.map((category, i) => (
+                    <li key={i}>
+                      <button className="dropdown-item">{category}</button>
+                    </li>
+                  ))}
                 </ul>
               </li>
             </ul>
