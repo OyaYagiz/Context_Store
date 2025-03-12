@@ -7,6 +7,7 @@ export const ProductContext = createContext();
 //* 2.  Verileri bileşenlere aktarıcak olan sağlayıcıyı ve onun tuttuğu verileri tanımlama
 export function ProductProvider({ children }) {
   const [products, setProducts] = useState();
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
   useEffect(() => {
     api.get("/products").then((res) => setProducts(res.data));
@@ -14,7 +15,8 @@ export function ProductProvider({ children }) {
   //* 3. Sağlayıcı fonksiyonları mutlaka Provider'ı return etmeli ve App'i sarmalamalı
   //* Value olarak eklenen değerler projedeki bileşenler tarafından erişilebilir olur
   return (
-    <ProductContext.Provider value={{ products }}>
+    <ProductContext.Provider 
+    value={{products, selectedCategory, setSelectedCategory}}>
       {children}
     </ProductContext.Provider>
   );

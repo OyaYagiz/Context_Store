@@ -1,9 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import { FaShopify } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import api from "../utils/api";
+import { ProductContext } from "../context/productContext";
 
 const Header = () => {
+  const {setSelectedCategory} = useContext(ProductContext)
   const [categories, setCategories] = useState();
   useEffect(() => {
     //kategorilerin verilerini al
@@ -64,9 +66,23 @@ const Header = () => {
                   Kategoriler
                 </button>
                 <ul className="dropdown-menu dropdown-menu-dark">
+                  <li>
+                    <button
+                      onClick={() => setSelectedCategory('all')}
+                      className="dropdown-item"
+                    >
+                      Hepsi
+                    </button>
+                  </li>
+
                   {categories?.map((category, i) => (
                     <li key={i}>
-                      <button className="dropdown-item">{category}</button>
+                      <button
+                        onClick={() => setSelectedCategory(category)}
+                        className="dropdown-item"
+                      >
+                        {category}
+                      </button>
                     </li>
                   ))}
                 </ul>
