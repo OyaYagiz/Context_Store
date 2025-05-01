@@ -1,8 +1,9 @@
 const Loader = () => {
-  return <div class="d-flex justify-content-center">
-  <div className="spinner-border" role="status">
-  </div>
-</div>
+  return (
+    <div className="d-flex justify-content-center">
+      <div className="spinner-border" role="status"></div>
+    </div>
+  );
 };
 
 export default Loader;

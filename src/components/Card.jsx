@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import { BasketContext } from "../context/basketContext";
+
 const Card = ({ product }) => {
+  const { addToBasket } = useContext(BasketContext);
+
   // context yapısında sepete ekleme fonksiyonuna aldık
 
   return (
@@ -11,7 +16,9 @@ const Card = ({ product }) => {
         <h4 className="text-truncate">{product.title}</h4>
         <p>{product.price}</p>
         <p>{product.category}</p>
-        <button className="w-100 rounded">Sepete Ekle</button>
+        <button onClick={() => addToBasket(product)} className="w-100 rounded">
+          Sepete Ekle
+        </button>
       </div>
     </div>
   );

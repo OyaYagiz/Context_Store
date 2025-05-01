@@ -5,14 +5,14 @@ import api from "../utils/api";
 import { ProductContext } from "../context/productContext";
 
 const Header = () => {
-  const {setSelectedCategory} = useContext(ProductContext)
+  const { setSelectedCategory } = useContext(ProductContext);
   const [categories, setCategories] = useState();
   useEffect(() => {
     //kategorilerin verilerini al
     api.get("/products/categories").then((res) => setCategories(res.data));
   }, []);
   return (
-    <nav className="navbar navbar-dark bg-dark bg-black fixed-top navbar-expand-md ">
+    <nav className="navbar navbar-dark bg-dark bg-black fixed-top navbar-expand-lg ">
       <div className="container-fluid">
         <Link className="navbar-brand d-flex gap-3 align-items-center " to="/">
           <FaShopify className="fs-1 text-warning" />
@@ -68,7 +68,7 @@ const Header = () => {
                 <ul className="dropdown-menu dropdown-menu-dark">
                   <li>
                     <button
-                      onClick={() => setSelectedCategory('all')}
+                      onClick={() => setSelectedCategory("all")}
                       className="dropdown-item"
                     >
                       Hepsi
@@ -88,7 +88,7 @@ const Header = () => {
                 </ul>
               </li>
             </ul>
-            <form className="d-flex mt-3">
+            {/* <form className="d-flex mt-3">
               <input
                 className="form-control me-2"
                 type="search"
@@ -97,7 +97,7 @@ const Header = () => {
               <button className="btn btn-success" type="submit">
                 Ara
               </button>
-            </form>
+            </form> */}
           </div>
         </div>
       </div>
