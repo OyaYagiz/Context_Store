@@ -3,10 +3,15 @@ import { FaShopify } from "react-icons/fa";
 import { useContext, useEffect, useState } from "react";
 import api from "../utils/api";
 import { ProductContext } from "../context/productContext";
+import { BasketContext } from "../context/BasketContext";
 
 const Header = () => {
-  const { setSelectedCategory } = useContext(ProductContext);
   const [categories, setCategories] = useState();
+
+  const { setSelectedCategory } = useContext(ProductContext);
+  const { basket } = useContext(BasketContext);
+  const totalAmount = basket.reduce((total, i) => total + i.amount, 0);
+
   useEffect(() => {
     //kategorilerin verilerini al
     api.get("/products/categories").then((res) => setCategories(res.data));
@@ -55,6 +60,7 @@ const Header = () => {
               <li className="nav-item">
                 <NavLink className="nav-link" to="/sepet">
                   Sepet
+                  <span className="badge bg-danger ms-1">{totalAmount} </span>
                 </NavLink>
               </li>
               <li className="nav-item dropdown">

@@ -61,7 +61,12 @@ button:focus-visible {
     color: #747bff;
   }
   button {
-    background-color: #161515;
-    color: #ffffff;
+    background-color: #f9f9f9;
   }
+}
+.active {
+  border-bottom: solid 2px yellow !important;
+
+  width: fit-content;
+  padding: 25px;
 }
