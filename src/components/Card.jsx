@@ -16,7 +16,7 @@ const Card = ({ product }) => {
         <h4 className="text-truncate">{product.title}</h4>
         <p>{product.price}</p>
         <p>{product.category}</p>
-        <button onClick={() => addToBasket(product)} className="w-100 rounded">
+        <button onClick={() => addToBasket(product)} className="w-100 rounded bg-dark text-white">
           Sepete Ekle
         </button>
       </div>
