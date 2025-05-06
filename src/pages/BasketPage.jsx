@@ -16,7 +16,7 @@ const BasketPage = () => {
             {basket.length === 0 ? (
               <div className="text-center my-5">
                 <p>Previously add a product into the basket</p>
-                <Link className="btn btn-info" to="/">
+                <Link className="btn btn-warning" to="/">
                   Go to products...
                 </Link>
               </div>
